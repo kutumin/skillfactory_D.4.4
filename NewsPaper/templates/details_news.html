@@ -1,0 +1,31 @@
+{% extends 'flatpages/default.html' %}
+{% load custom_filters %}
+
+{% block title %}
+{{ flatpage.title }}
+{% endblock title %}
+
+{% block content %}
+    <h2>{{ flatpage.title }}</h2>
+    <hr>
+    <h3>НОВОСТИ</h3>
+    <i>{{ flatpage.content }} </i>
+    <br>
+    <p>здесь будет выгрузка из базы данных</p>
+
+    Новость № {{news.id}}
+    
+    {{news.article_text|Censor }}
+    <br>
+
+    Дата публикации новости:
+    день -
+    {{news.post_date_created.day}}
+    месяц -
+    {{news.post_date_created.month}}
+    год -
+    {{news.post_date_created.year}}
+    время -
+    {{news.post_detailed_data_created}}
+
+{% endblock content %}

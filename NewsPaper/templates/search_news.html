@@ -10,7 +10,13 @@
     <hr>
     <h3>НОВОСТИ</h3>
     <i>{{ flatpage.content }} </i>
-    <br>    {% for i in news %}
+
+    <form method="GET">
+        {{ filter.form }} <!-- Форму от фильтров за нас сделает Django. А вот кнопку, увы, придётся делать самому -->
+        <input type="submit" value="Найти">
+    </form>
+
+    <br>{% for i in filter.qs %}
         {{ i.article_text|Censor}}
         {{ i.author}}
         {{ i.post_date_created}}
@@ -42,4 +48,13 @@
     {% endif %}
  
 {% endif %}
+
+<br>
+<br>
+
+<form method="POST">
+    {% csrf_token %} 
+    {{ form }}
+    <input type="submit" value="Добавить товар">
+</form>
 {% endblock content %}  

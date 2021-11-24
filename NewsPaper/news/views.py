@@ -17,7 +17,6 @@ class PostDetail(DetailView):
     model = Post
     template_name = 'details_news.html' 
     context_object_name = 'news'
-    queryset = Post.objects.filter(post_type='news')
 
 class PostDetailEdit(DetailView):
     model = Post
@@ -26,19 +25,19 @@ class PostDetailEdit(DetailView):
     queryset = Post.objects.filter(post_type='news')
 
 class ProductUpdateView(UpdateView):
-    template_name = 'details_news.html'
+    template_name = 'add_news.html'
     form_class = PostForm
- 
+
     def get_object(self, **kwargs):
         id = self.kwargs.get('pk')
         return Post.objects.get(pk=id)
  
  
-# дженерик для удаления товара
-class ProductDeleteView(DeleteView):
-    template_name = 'sample_app/product_delete.html'
+class PostDeleteView(DeleteView):
+    template_name = 'delete_news.html'
     queryset = Post.objects.all()
-    success_url = '/products/'
+    context_object_name = 'news'
+    success_url = '/news/'
 
 
 class PostSearch(ListView):

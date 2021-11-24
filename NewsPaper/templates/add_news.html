@@ -10,16 +10,14 @@
     <hr>
     <h3>Добавление Новостей и Постов</h3>
     <i>{{ flatpage.content }} </i>
-    
-    <form method="GET">
-        {{ filter.form }} <!-- Форму от фильтров за нас сделает Django. А вот кнопку, увы, придётся делать самому -->
-        <input type="submit" value="Найти">
-    </form>
+
     
     <br>{% for i in news %}
         {{ i.article_text|Censor}}
         {{ i.author}}
         {{ i.post_date_created}}
+        {{ i.id}}
+        <a href="{% url 'update_post_detail' i.id %}"><u>Редактировать</u></a>    
     {% endfor %}
 
     <br>

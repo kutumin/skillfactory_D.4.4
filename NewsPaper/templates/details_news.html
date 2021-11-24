@@ -11,10 +11,9 @@
     <h3>НОВОСТИ</h3>
     <i>{{ flatpage.content }} </i>
     <br>
-    <p>здесь будет выгрузка из базы данных</p>
-
-    {% for post in filter.qs %} 
-        <a href="{% url 'post_detail' post.id %}">{{ post.id }}</a>
-        <a href="{% url 'product_update' product.id %}"><u>Редактировать</u></a>    
-    {% endfor %}
+    <p>здесь будет выгрузка из базы данных</p>  
+    {{news.id}}
+    {{news.article_text|Censor}}
+    <a href="{% url 'update_post_detail' news.id %}"><u>Редактировать</u></a>
+    <a href="{% url 'post_delete' news.id %}"><u> Удалить </u></a>    
 {% endblock content %}

@@ -14,9 +14,13 @@
     <br>
     {% if news %}
         {% for i in news %}
+            <p>ID Новости: {{i.id}}</p>
+
             {{ i.article_text|Censor}}
             {{ i.author}}
             {{ i.post_date_created}}
+        <a href="{% url 'update_post_detail' i.id %}"><u>Редактировать</u></a>
+        <a href="{% url 'post_delete' i.id %}"><u> Удалить </u></a> <!-- добавим ссылку на удаление товара-->    
         {% endfor %}
         <br>
         <br>

@@ -13,19 +13,8 @@
     <br>
     <p>здесь будет выгрузка из базы данных</p>
 
-    Новость № {{news.id}}
-    
-    {{news.article_text|Censor }}
-    <br>
-
-    Дата публикации новости:
-    день -
-    {{news.post_date_created.day}}
-    месяц -
-    {{news.post_date_created.month}}
-    год -
-    {{news.post_date_created.year}}
-    время -
-    {{news.post_detailed_data_created}}
-
+    {% for post in filter.qs %} 
+        <a href="{% url 'post_detail' post.id %}">{{ post.id }}</a>
+        <a href="{% url 'product_update' product.id %}"><u>Редактировать</u></a>    
+    {% endfor %}
 {% endblock content %}
